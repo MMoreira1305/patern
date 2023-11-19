@@ -12,17 +12,17 @@ const db = new sqlite3.Database('./cursos.db');
 
 // Criar tabela de cursos e inserir dados
 db.serialize(() => {
-    db.run("CREATE TABLE IF NOT EXISTS cursos (id INTEGER PRIMARY KEY, nome TEXT)");
+    db.run("CREATE TABLE IF NOT EXISTS cursos (id INTEGER PRIMARY KEY, nome TEXT, id_professor INT)");
 
     const cursos = [
-        'Gestão Pessoal',
-        'Educação do Futuro',
-        'Curso de HTML e CSS3',
-        'Curso de HTML e CSS2',
-        'Curso de HTML e CSS1'
+        ['Gestão Pessoal', 1],
+        ['Educação do Futuro', 2],
+        ['Curso de HTML e CSS3', 1],
+        ['Curso de HTML e CSS2', 3],
+        ['Curso de HTML e CSS1', 3]
     ];
 
-    const insertCurso = db.prepare("INSERT INTO cursos (nome) VALUES (?)");
+    const insertCurso = db.prepare("INSERT INTO cursos (nome, id_professor) VALUES (?, ?)");
     cursos.forEach(curso => {
         insertCurso.run(curso);
     });
@@ -61,8 +61,8 @@ app.get('/', (req, res) => {
 })
 
 // Listar todos os pets
-app.get('/pets', (req, res) => {
-	db.all('SELECT * FROM pets', (err, rows) => {
+app.get('/cursos', (req, res) => {
+	db.all('SELECT * FROM cursos', (err, rows) => {
 		if (err) {
 			res.status(500).json({ error: err.message });
 			return;
@@ -72,15 +72,15 @@ app.get('/pets', (req, res) => {
 });
 
 // Obter informações de um pet específico
-app.get('/pets/:id', (req, res) => {
+app.get('/cursos/:id', (req, res) => {
 	const { id } = req.params;
-	db.get('SELECT * FROM pets WHERE id = ?', [id], (err, row) => {
+	db.get('SELECT * FROM cursos WHERE id = ?', [id], (err, row) => {
 		if (err) {
 			res.status(500).json({ error: err.message });
 			return;
 		}
 		if (!row) {
-			res.status(404).json({ error: 'Pet not found' });
+			res.status(404).json({ error: 'Course not found' });
 			return;
 		}
 		res.json({ pet: row });
@@ -88,9 +88,9 @@ app.get('/pets/:id', (req, res) => {
 });
 
 // Adicionar um novo pet
-app.post('/pets', (req, res) => {
-	const { name, species } = req.body;
-	db.run('INSERT INTO pets (name, species) VALUES (?, ?)', [name, species], function (err) {
+app.post('/cursos', (req, res) => {
+	const { nome, id_professor } = req.body;
+	db.run('INSERT INTO cursos (nome, id_professor) VALUES (?, ?)', [nome, id_professor], function (err) {
 		if (err) {
 			res.status(500).json({ error: err.message });
 			return;
@@ -100,27 +100,27 @@ app.post('/pets', (req, res) => {
 });
 
 // Atualizar informações de um pet
-app.put('/pets/:id', (req, res) => {
+app.put('/cursos/:id', (req, res) => {
 	const { id } = req.params;
-	const { name, species } = req.body;
-	db.run('UPDATE pets SET name = ?, species = ? WHERE id = ?', [name, species, id], (err) => {
+	const { nome, id_professor } = req.body;
+	db.run('UPDATE cursos SET nome = ?, id_professor = ? WHERE id = ?', [nome, id_professor, id], (err) => {
 		if (err) {
 			res.status(500).json({ error: err.message });
 			return;
 		}
-		res.json({ message: 'Pet updated successfully' });
+		res.json({ message: 'Course updated successfully' });
 	});
 });
 
 // Deletar um pet
-app.delete('/pets/:id', (req, res) => {
+app.delete('/cursos/:id', (req, res) => {
 	const { id } = req.params;
-	db.run('DELETE FROM pets WHERE id = ?', [id], (err) => {
+	db.run('DELETE FROM cursos WHERE id = ?', [id], (err) => {
 		if (err) {
 			res.status(500).json({ error: err.message });
 			return;
 		}
-		res.json({ message: 'Pet deleted successfully' });
+		res.json({ message: 'Course deleted successfully' });
 	});
 });
 
