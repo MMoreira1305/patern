@@ -4,4 +4,4 @@ class Aluno {
     constructor() {  }
 }
 
-module.exports = Aluno;
+module.exports = Aluno
