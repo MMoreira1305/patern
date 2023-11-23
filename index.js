@@ -1,6 +1,11 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+const Curso = require('./model/curso')
+const Turma = require('./model/turma')
+const Professor = require('./model/professor')
+const Avaliacao = require('./model/avaliacao')
+const Avaliacao_Nota = require('./model/avaliacao_nota')
+const Aluno = require('./model/aluno')
 
 const app = express();
 const port = 3000;
@@ -8,10 +13,22 @@ const port = 3000;
 // Conectar ao banco de dados SQLite (pode ser necessário criar o arquivo pets.db primeiro)
 const db = new sqlite3.Database('./cursos.db');
 
+const sequelize = require('./config/db');
+
+sequelize.sync()
+  .then(() => {
+    console.log('Tabelas sincronizadas com sucesso!');
+    // Aqui você pode iniciar o servidor ou realizar outras operações da sua aplicação
+  })
+  .catch((err) => {
+    console.error('Erro ao sincronizar tabelas:', err);
+  });
+
+
 // Criar a tabela de pets se ela não existi
 
 // Criar tabela de cursos e inserir dados
-db.serialize(() => {
+/*db.serialize(() => {
     db.run("CREATE TABLE IF NOT EXISTS cursos (id INTEGER PRIMARY KEY, nome TEXT, id_professor INT)");
 
     const cursos = [
@@ -50,7 +67,7 @@ db.serialize(() => {
             console.log("\nInformações sobre Curso de HTML e CSS3:");
             console.log(${row.id} - ${row.nome});
         }
-    });*/
+    });
 });
 
 app.use(express.json());
@@ -122,7 +139,7 @@ app.delete('/cursos/:id', (req, res) => {
 		}
 		res.json({ message: 'Course deleted successfully' });
 	});
-});
+});*/
 
 // Iniciar o servidor
 app.listen(port, () => {
