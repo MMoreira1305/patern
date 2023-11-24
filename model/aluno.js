@@ -31,4 +31,4 @@ const Aluno = sequelize.define('Aluno', {
 Aluno.belongsTo(Curso)
 Aluno.belongsTo(Turma)
 
-module.exports = Curso;
+module.exports = Aluno;

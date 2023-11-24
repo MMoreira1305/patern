@@ -1,11 +1,7 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-const Curso = require('./model/curso')
-const Turma = require('./model/turma')
-const Professor = require('./model/professor')
-const Avaliacao = require('./model/avaliacao')
-const Avaliacao_Nota = require('./model/avaliacao_nota')
-const Aluno = require('./model/aluno')
+const alunoController = require('./controller/alunoController');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3000;
@@ -23,6 +19,13 @@ sequelize.sync()
   .catch((err) => {
     console.error('Erro ao sincronizar tabelas:', err);
   });
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Usando as rotas do controlador de alunos no arquivo index.js
+const alunosRouter = alunoController(); // Obtenha as rotas do controlador
+app.use('/alunos', alunosRouter); // Defina o prefixo '/alunos' para as rotas do alunoController
 
 
 // Criar a tabela de pets se ela não existi
