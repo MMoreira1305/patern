@@ -1,6 +1,8 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const alunoController = require('./controller/alunoController');
+const cursoController = require('./controller/cursoController');
+const loginController = require('./controller/loginController');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -25,124 +27,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Usando as rotas do controlador de alunos no arquivo index.js
 const alunosRouter = alunoController(); // Obtenha as rotas do controlador
-app.use('/alunos', alunosRouter); // Defina o prefixo '/alunos' para as rotas do alunoController
+app.use('/alunos', alunosRouter);
 
+const cursoRouter = cursoController();
+app.use('/curso', cursoRouter)
 
-// Criar a tabela de pets se ela não existi
-
-// Criar tabela de cursos e inserir dados
-/*db.serialize(() => {
-    db.run("CREATE TABLE IF NOT EXISTS cursos (id INTEGER PRIMARY KEY, nome TEXT, id_professor INT)");
-
-    const cursos = [
-        ['Gestão Pessoal', 1],
-        ['Educação do Futuro', 2],
-        ['Curso de HTML e CSS3', 1],
-        ['Curso de HTML e CSS2', 3],
-        ['Curso de HTML e CSS1', 3]
-    ];
-
-    const insertCurso = db.prepare("INSERT INTO cursos (nome, id_professor) VALUES (?, ?)");
-    cursos.forEach(curso => {
-        insertCurso.run(curso);
-    });
-    insertCurso.finalize();
-
-    // Selecionar todos os cursos
-    // db.all("SELECT * FROM cursos", (err, rows) => {
-    //     if (err) {
-    //         console.error(err.message);
-    //     } else {
-    //        console.log("Cursos disponíveis:");
-    //        rows.forEach(row => {
-    //            console.log(${row.id} - ${row.nome});
-    //        });
-    //    }
-    // });
-
-
-
-    // Selecionar um curso específico (exemplo: Curso de HTML e CSS3)
-    /*db.get("SELECT * FROM cursos WHERE nome = ?", ['Curso de HTML e CSS3'], (err, row) => {
-        if (err) {
-            console.error(err.message);
-        } else {
-            console.log("\nInformações sobre Curso de HTML e CSS3:");
-            console.log(${row.id} - ${row.nome});
-        }
-    });
-});
-
-app.use(express.json());
-
-app.get('/', (req, res) => {
-    const filePath = path.join(__dirname, 'views', 'index.html');
-    res.sendFile(filePath);
-})
-
-// Listar todos os pets
-app.get('/cursos', (req, res) => {
-	db.all('SELECT * FROM cursos', (err, rows) => {
-		if (err) {
-			res.status(500).json({ error: err.message });
-			return;
-		}
-		res.json({ pets: rows });
-	});
-});
-
-// Obter informações de um pet específico
-app.get('/cursos/:id', (req, res) => {
-	const { id } = req.params;
-	db.get('SELECT * FROM cursos WHERE id = ?', [id], (err, row) => {
-		if (err) {
-			res.status(500).json({ error: err.message });
-			return;
-		}
-		if (!row) {
-			res.status(404).json({ error: 'Course not found' });
-			return;
-		}
-		res.json({ pet: row });
-	});
-});
-
-// Adicionar um novo pet
-app.post('/cursos', (req, res) => {
-	const { nome, id_professor } = req.body;
-	db.run('INSERT INTO cursos (nome, id_professor) VALUES (?, ?)', [nome, id_professor], function (err) {
-		if (err) {
-			res.status(500).json({ error: err.message });
-			return;
-		}
-		res.json({ pet_id: this.lastID });
-	});
-});
-
-// Atualizar informações de um pet
-app.put('/cursos/:id', (req, res) => {
-	const { id } = req.params;
-	const { nome, id_professor } = req.body;
-	db.run('UPDATE cursos SET nome = ?, id_professor = ? WHERE id = ?', [nome, id_professor, id], (err) => {
-		if (err) {
-			res.status(500).json({ error: err.message });
-			return;
-		}
-		res.json({ message: 'Course updated successfully' });
-	});
-});
-
-// Deletar um pet
-app.delete('/cursos/:id', (req, res) => {
-	const { id } = req.params;
-	db.run('DELETE FROM cursos WHERE id = ?', [id], (err) => {
-		if (err) {
-			res.status(500).json({ error: err.message });
-			return;
-		}
-		res.json({ message: 'Course deleted successfully' });
-	});
-});*/
+const loginRouter = loginController();
+app.use('/login', loginRouter)
 
 // Iniciar o servidor
 app.listen(port, () => {

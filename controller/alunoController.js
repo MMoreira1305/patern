@@ -1,11 +1,12 @@
 const express = require('express');
 const Aluno = require('../model/aluno'); // Importe o modelo Aluno do seu arquivo models
+const verifyToken = require('../security/auth');
 
 function alunoController() {
   const router = express.Router();
 
   // Obter todos os alunos
-  router.get('/', async (req, res) => {
+  router.get('/', verifyToken, async (req, res) => {
     try {
       const alunos = await Aluno.findAll();
       res.json(alunos);
@@ -16,9 +17,9 @@ function alunoController() {
 
   // Criar um novo aluno
   router.post('/', async (req, res) => {
-    const { nome, sobrenome, data_nasc, cpf } = req.body;
+    const { nome, sobrenome, data_nasc, cpf, login, senha } = req.body;
     try {
-      const novoAluno = await Aluno.create({ nome, sobrenome, data_nasc, cpf });
+      const novoAluno = await Aluno.create({ nome, sobrenome, data_nasc, cpf, login, senha });
       res.status(201).json(novoAluno);
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -26,7 +27,7 @@ function alunoController() {
   });
 
   // Obter informações de um aluno específico
-  router.get('/:matricula', async (req, res) => {
+  router.get('/:matricula', verifyToken, async (req, res) => {
     const { matricula } = req.params;
     try {
       const aluno = await Aluno.findByPk(matricula);
@@ -41,7 +42,7 @@ function alunoController() {
   });
 
   // Atualizar informações de um aluno
-  router.put('/:matricula', async (req, res) => {
+  router.put('/:matricula', verifyToken , async (req, res) => {
     const { matricula } = req.params;
     const { nome, sobrenome, data_nasc, cpf } = req.body;
     try {
@@ -58,7 +59,7 @@ function alunoController() {
   });
 
   // Excluir um aluno
-  router.delete('/:matricula', async (req, res) => {
+  router.delete('/:matricula',verifyToken , async (req, res) => {
     const { matricula } = req.params;
     try {
       const aluno = await Aluno.findByPk(matricula);

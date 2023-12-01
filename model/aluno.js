@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Importe a instância do Sequelize configurada
 const Curso = require('./curso');
-const Turma = require('./turma');
 const { v4: uuidv4 } = require('uuid');
 
 const Aluno = sequelize.define('Aluno', {
@@ -25,10 +24,17 @@ const Aluno = sequelize.define('Aluno', {
   cpf: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  login: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  senha: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 });
 
 Aluno.belongsTo(Curso)
-Aluno.belongsTo(Turma)
 
 module.exports = Aluno;
