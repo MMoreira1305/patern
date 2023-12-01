@@ -2,9 +2,11 @@ const Curso = require('../model/curso')
 const express = require('express')
 const verifyToken = require('../security/auth');
 
+// Lembrando que em todas as rotas tem o controle por token de autenticação JWT (Json Web Token)
+// Função de controle de rotas dos cursos
 function cursoController() {
-
     const router = express.Router();
+
     // Método para buscar todos os cursos
     router.get('/', verifyToken, async(req, res) => {
       try {
@@ -23,8 +25,6 @@ function cursoController() {
           nome,
           descricao,
           duracao_semanas,
-     // Aqui é onde você passa a chave estrangeira correspondente à relação com Turma
-          // Se houverem outros campos, adicione-os aqui de acordo com seu modelo
         });
         res.status(201).json(novoCurso);
       } catch (error) {
@@ -46,6 +46,7 @@ function cursoController() {
       }
     })
 
+    // Aqui estou pegando um curso a partir do nome dele, na rita curso/f/nome do curso
     router.get('/f/:nome',verifyToken, async(req, res) => {
         const { nome } = req.params;
         try {

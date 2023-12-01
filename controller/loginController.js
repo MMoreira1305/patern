@@ -2,6 +2,7 @@ const express = require('express')
 const aluno = require('../model/aluno')
 const jwt = require('jsonwebtoken');
 
+// Função de controle do login
 function loginController(){
     const router = express.Router()
 
