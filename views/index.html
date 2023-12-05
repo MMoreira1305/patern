@@ -7,67 +7,80 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+  <div class="nav">
+    <div class="menu-logo">
+      <a href="index.html"><img src="logo-icon.png" alt="Logo"></a>
+    </div>
+    <nav>
+      <ul class="menu-1">
+        <li id="links"><a href="catalog.html">Catálogo</a></li>
+        <li id="links"><a href="index.html">Sobre</a></li>
+        <li id="links"><a href="contato.html">Contato</a></li>
+      </ul>
+    </header>
 
-  <h1>Pets CRUD Interface</h1>
 
-  <h2>Adicionar Pet</h2>
-  <form id="addPetForm">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
-    <label for="species">Espécie:</label>
-    <input type="text" id="species" name="species" required>
-    <button type="button" onclick="addPet()">Adicionar</button>
-  </form>
+      <h2>Acessar:</h2>
+      <form id="addPetForm">
+        <label for="name">login</label>
+        <input type="text" id="name" name="name" required>
+        <label for="species">senha:</label>
+        <input type="text" id="species" name="species" required>
+        <button type="button" onclick="addPet()">Adicionar</button>
+      </form>
 
-  <h2>Listar Pets</h2>
-  <ul id="petsList"></ul>
+      <h2>cadastrados:</h2>
+      <ul id="petsList"></ul>
 
-  <script>
-    // Função para adicionar um novo pet
-    function addPet() {
-      const name = document.getElementById('name').value;
-      const species = document.getElementById('species').value;
+      <script>
+        // Função para adicionar um novo pet
+        function addPet() {
+          const name = document.getElementById('name').value;
+          const species = document.getElementById('species').value;
 
-      fetch('http://localhost:3000/pets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, species }),
-      })
-      .then(response => response.json())
-      .then(data => {
-        alert('Pet adicionado com sucesso!');
-        document.getElementById('addPetForm').reset();
+          fetch('http://localhost:3000/pets', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, species }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            alert('Pet adicionado com sucesso!');
+            document.getElementById('addPetForm').reset();
+            loadPets();
+          })
+          .catch(error => {
+            console.error('Erro ao adicionar o pet:', error);
+          });
+        }
+
+        // Função para carregar a lista de pets
+        function loadPets() {
+          fetch('http://localhost:3000/pets')
+          .then(response => response.json())
+          .then(data => {
+            const petsList = document.getElementById('petsList');
+            petsList.innerHTML = '';
+
+            data.pets.forEach(pet => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `${pet.name} - ${pet.species}`;
+              petsList.appendChild(listItem);
+            });
+          })
+          .catch(error => {
+            console.error('Erro ao carregar a lista de pets:', error);
+          });
+        }
+
+        // Carregar a lista de pets ao carregar a página
         loadPets();
-      })
-      .catch(error => {
-        console.error('Erro ao adicionar o pet:', error);
-      });
-    }
+      </script>
 
-    // Função para carregar a lista de pets
-    function loadPets() {
-      fetch('http://localhost:3000/pets')
-      .then(response => response.json())
-      .then(data => {
-        const petsList = document.getElementById('petsList');
-        petsList.innerHTML = '';
-
-        data.pets.forEach(pet => {
-          const listItem = document.createElement('li');
-          listItem.textContent = `${pet.name} - ${pet.species}`;
-          petsList.appendChild(listItem);
-        });
-      })
-      .catch(error => {
-        console.error('Erro ao carregar a lista de pets:', error);
-      });
-    }
-
-    // Carregar a lista de pets ao carregar a página
-    loadPets();
-  </script>
-
+    </nav>
+  </div>
 </body>
 </html>
