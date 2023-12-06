@@ -1,0 +1,837 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    padding: 0;
+  }
+  
+  .center{
+    max-width: 1440px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 0 3%;
+  }
+  
+  body {
+    background-color: #fffae4;
+  }
+  
+  .header {
+    height: 70px;
+    width: 100%;
+    background-color: #fcfcfc;
+    transition: background-color 0.2s;
+    position: fixed;
+    z-index: 1;
+    border-bottom: 1px solid #00000040;
+  }
+  
+  .header .center{
+    position: relative;
+    top: -37px;
+  }
+  
+  .scrolled {
+    background-color: #fcfcfc;
+  }
+  
+  nav.navLinks {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo{
+    width: 120px;
+    margin-right: 30px;
+  }
+  
+  .nav-links{
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nav-links ul{
+    list-style: none;
+    flex: 2;
+  }
+  
+  .nav-links ul li{
+    display: inline-block;
+    margin-right: 30px;
+  }
+  
+  .nav-links ul a {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: Space grotesk;
+    font-size: 15px;
+  }
+  
+  .nav-links ul a:hover {
+    color: #1345e8;
+  }
+  
+  .menu-2 {
+    display: flex;
+    width: 190px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu-2 img {
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  .menu-2-login {
+    border: none;
+    background-color: #00000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: Space grotesk;
+    font-size: 15px;
+    text-decoration: none;
+    color: #000000;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .menu-2-login:hover {
+    color: #1345e8;
+    border-color: #1345e8;
+  }
+  
+  .menu-2-nova-conta {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: Space grotesk;
+    font-size: 15px;
+  }
+  
+  .menu-2-nova-conta:hover {
+    opacity: 0.9;
+  }
+  
+  .menu-mobile,
+  .menu-close{
+    display: none;
+    cursor: pointer;
+  }
+  
+  .menu-mobile{
+    background: url('../img/icons8-menu.svg');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .menu-close{
+    background: url('../img/icons8-close.svg');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .espaco-header {
+    height: 65px;
+  }
+  
+  .container-header {
+    background-color: #151515;
+    padding: 20px 150px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: SF Pro display;
+    width: 100%;
+  }
+  
+  .container-header .center{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .container-header img {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+  }
+  
+  .cont-catalog{
+    background-color: #ffd83b;
+  }
+  
+  .cont-catalog .center{
+    padding: 0;
+    margin: 0 auto;
+  }
+  
+  .cont-box {
+    width: 100%;
+    padding: 110px 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cont-box-text{
+    width: 55%;
+  }
+  
+  .cont-box-text h2{
+    font-size: 2.8rem;
+  }
+  
+  .cont-box a {
+    display: block;
+    width: 45%;
+    text-align: center;
+    font-family: Space grotesk;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 40px;
+    text-decoration: none;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .cont-box a:hover{
+    color: #000;
+    background: #fff;
+  }
+  
+  .cont-box img {
+    height: 100%;
+    width: 40%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .secao-1 {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    height: 80px;
+    display: flex;
+  }
+  
+  .secao-1-conteudo {
+    padding: 0 3%;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .secao-1-conteudo h1 {
+    font-family: Space Grotesk;
+    font-size: 1.825rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: #000000;
+  }
+  
+  .box-pag {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-family: Space Grotesk;
+    background-color: #ffd83b;
+    margin: 40px 3%;
+    padding: 30px;
+    font-weight: 500;
+    font-size: 18px;
+    border: 1px solid #00000040;
+  }
+  
+  .box-pag a:hover {
+    text-decoration: underline;
+  }
+  
+  .box-pag a {
+    color: #002dc0;
+    text-decoration: none;
+  }
+  
+  .cursos-destaque {
+    padding: 0 3%;
+  }
+  
+  .cursos-destaque h5 {
+    font-size: 23px;
+    font-weight: 600;
+    font-family: Space Grotesk;
+  }
+  
+  .grade-cursos-destaque {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    justify-content: space-between;
+    text-decoration: none;
+    margin-top: 30px;
+  }
+  
+  .curso-destaque {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+  }
+  
+  .curso-destaque img:hover {
+    opacity: 0.95;
+  }
+  
+  .cursos-destaque img {
+    width: 100%;
+    padding: auto;
+    height: 155px;
+    object-fit: cover;
+  }
+  
+  .grade-cursos-destaque h3 {
+    font-size: 16px;
+    margin-top: 0;
+    color: #000000;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: 600;
+    font-family: SF UI Display;
+  }
+  
+  .grade-cursos-destaque h4 {
+    font-family: SF Pro Display;
+    display: flex;
+    color: #2e2e2e;
+    font-weight: 400;
+    font-size: 14px;
+    padding-bottom: 10px;
+    align-items: center;
+  }
+  
+  .grade-cursos-destaque p {
+    color: #000000;
+    font-family: SF Pro display;
+    padding: 5px;
+    background-color: #ffe476;
+    width: max-content;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .cursos {
+    width: 100%;
+    margin-left: 20px;
+  }
+  
+  .curso {
+    gap: 5px;
+    width: 100%;
+    padding-top: 0px;
+    margin-bottom: 40px;
+    border-top: 1px solid #00000040;
+    border-right: 1px solid #00000040;
+    border-bottom: 1px solid #00000040;
+    display: flex;
+    background: #fff;
+  }
+  
+  .curso:hover {
+    transition: 0.1s;
+    opacity: 0.9;
+  }
+  
+  .curso-link {
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+  }
+  
+  .curso-text {
+    height: max-content;
+    display: block;
+  }
+  
+  .curso-text legend {
+    max-width: 590px;
+    width: 100%;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 0;
+    color: #2e2e2e;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-family: SF Pro Display;
+  }
+  
+  .curso-text h3 {
+    font-size: 16px;
+    margin-top: 0;
+    color: #000000;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-family: SF UI Display;
+  }
+  
+  .curso img {
+    width: 255px;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0;
+  }
+  
+  .curso-text{
+    padding: 20px;
+  }
+  
+  .curso-text p {
+    color: #000000;
+    font-family: SF Pro display;
+    padding: 5px;
+    background-color: #ffe476;
+    width: max-content;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .curso-text h4 {
+    font-family: SF Pro Display;
+    display: flex;
+    color: #2e2e2e;
+    font-weight: 400;
+    font-size: 14px;
+    padding-bottom: 10px;
+    align-items: center;
+  }
+  
+  .header-secao-cursos {
+    padding: 40px 3% 0 3%;
+  }
+  
+  .header-secao-cursos p {
+    font-size: 23px;
+    font-weight: 700;
+    font-family: Space Grotesk;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #00000040;
+    padding-bottom: 20px;
+  }
+  
+  .secao-cursos .center{
+    display: flex;
+  }
+  
+  .grade-cursos {
+    width: 100%;
+    margin-bottom: 80px;
+    text-decoration: none;
+  }
+  
+  .grade-cursos a {
+    color: #01256f;
+    text-decoration: none;
+  }
+  
+  .grade-cursos a:hover {
+    text-decoration: underline;
+  }
+  
+  #filtros {
+    margin-right: 30px;
+    min-height: 800px;
+    min-width: 200px;
+    max-width: 200px;
+    font-family: Space grotesk;
+  }
+  
+  #filtros h3 {
+    font-family: Space grotesk;
+    font-size: 20px;
+  }
+  
+  #filtros label {
+    font-size: 16px;
+  }
+  
+  #filtros p {
+    font-size: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  #filtros hr {
+    border: 0.5px dotted #000000;
+  }
+  
+  #filtros span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 17px;
+    padding-left: 5px;
+  }
+  
+  .filtro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .filtro img {
+    width: 25px;
+  }
+  
+  #btnFiltrar {
+    display: none;
+    border: none;
+    color: #ffffff;
+  }
+  
+  #btnLimparFiltros {
+    align-items: center;
+    color: #0000009f;
+    background-color: #fffae4;
+    font-weight: 600;
+    font-family: SF UI display;
+    margin-top: 2px;
+    border: none;
+    font-size: 14px;
+    padding: 0;
+    display: flex;
+    cursor: pointer;
+  }
+  
+  #btnLimparFiltros:active {
+    opacity: 0.8;
+  }
+  
+  input[type="checkbox"] {
+    -webkit-appearance: none; /* Para navegadores WebKit (Safari, Chrome) */
+    -moz-appearance: none; /* Para navegadores Gecko (Firefox) */
+    appearance: none; /* Para outros navegadores */
+    width: 20px;
+    align-items: center;
+    height: 20px;
+    border: 2px solid #000000;
+    outline: none; /* Para remover a borda de foco padrão */
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-image: url(/img/icons8-done.svg);
+    border-color: #0032d8;
+    background-position: center;
+  }
+  
+  #mensagemNenhumCurso {
+    display: none;
+    color: #000000;
+    font-family: Sora;
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 250px;
+    width: 650px;
+  }
+  
+  footer {
+    background-color: #fcfcfc;
+    font-family: Space grotesk;
+    border-top: 1px solid #000000;
+  }
+  
+  footer .center{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 3%;
+  }
+  
+  .footer-col-1 {
+    padding-right: 50px;
+    min-width: 200px;
+  }
+  
+  .footer-col {
+    display: flex;
+    gap: 50px;
+    border-right: 1px solid #000;
+  }
+  
+  .footer-col-1 h1 {
+    font-size: 16px;
+    color: #000000;
+  }
+  
+  .footer-col-1 a {
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+    margin-top: 13px;
+    color: #000000;
+  }
+  
+  .footer-img img {
+    width: 150px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fcfcfc;
+    padding: 5px;
+    width: 130px;
+    z-index: 1;
+    border-radius: 3px;
+  }
+  
+  .dropdown-content a {
+    margin-top: 10px;
+    color: #000000;
+    font-size: 14px;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-family: Space grotesk;
+  }
+  
+  .dropdown-content a:hover {
+    color: #002dc0;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  @media screen and (min-width: 2000px){
+    .secao-1-conteudo h1,
+    .cursos-destaque h5,
+    .header-secao-cursos p{
+      text-align: center;
+    }
+  
+    .curso-destaque img{
+      height: 300px;
+    }
+  }
+  
+  @media screen and (max-width: 1150px){
+  
+    /* grade-cursos-destaque */
+  
+    .grade-cursos-destaque{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+  
+    .curso-destaque:nth-of-type(5){
+      grid-column: span 2;
+    }
+  }
+  
+  @media screen and (max-width: 800px){
+    .container-header{
+      padding: 20px 40px 20px 40px;
+    }
+    
+    .container-header p{
+      font-size: .85rem;
+    }
+  
+    .cont-box-text h2{
+      font-size: 2.2rem;
+    }
+  
+    .cont-box-text a{
+      font-size: .9rem;
+      width: 60%;
+    }
+  
+    .curso{
+      flex-direction: column;
+    }
+  
+    .curso img{
+      width: 100%;
+    }
+  
+  }
+  
+  @media screen and (max-width: 700px){
+    .menu-mobile,
+    .menu-close{
+      display: block;
+    }
+  
+    .menu-close{
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+    }
+  
+    nav.navLinks{
+      justify-content: space-between;
+    }
+    
+    .nav-links{
+      position: absolute;
+      right: -250px;
+      top: -13px;
+      width: 250px;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      background: #fff;
+      transition: right 0.5s;
+    }
+  
+    .nav-links ul{
+      flex: 0;
+      width: 100%;
+      z-index: 999;
+    }
+  
+    .nav-links ul li{
+      margin-right: 0;
+      display: block;
+      text-align: center;
+    }
+  
+    .nav-links ul a{
+      padding: 20px 0;
+      display: block;
+    }
+  
+    .nav-links ul a:hover{
+      background: #f0f0f0;
+    }
+  
+    .menu-2{
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      position: absolute;
+      padding-top: 30px;
+    }
+  
+    .menu-2-login{
+      margin-top: 20px;
+    }
+  
+    .menu-2-nova-conta{
+      position: absolute;
+      bottom: 20px;
+    }
+  
+    /* cont-box */
+    .cont-catalog{
+      background: none;
+    }
+  
+    .cont-catalog{
+      background: rgba(0,0,0,0.7);
+    }
+  
+    .cont-box-text{
+      width: 100%;
+    }
+  
+    .cont-box h2{
+      color: #fff;
+      font-size: 2.5rem;
+    }
+  
+    .cont-box img{
+      width: 100%;
+      z-index: -1;
+    }
+  
+    /* footer */
+  
+    footer .center{
+      flex-direction: column;
+      padding: 0;
+    }
+  
+    .footer-col{
+      border-right: none;
+      width: 100%;
+      justify-content: center;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding: 20px 0 10px;
+    }
+  
+    .footer-col-1{
+      padding: 0;
+      min-width: auto;
+    }
+  
+    .footer-col-1 h1{
+      font-size: 15px;
+    }
+  
+    .footer-col-1 a{
+      font-size: 11px;
+    }
+  
+    .footer-img img{
+      width: 100px;
+    }
+  }
+  
+  @media screen and (max-width: 520px){
+    .container-header{
+      padding-top: 20px;
+    }
+  
+    .container-header .center{
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .container-header img{
+      position: static;
+    }
+  
+    .cont-box-text h2{
+      font-size: 2.2rem;
+    }
+  
+    #filtros{
+      display: none;
+    }
+  
+    .cursos{
+      margin: 0;
+    }
+  }
